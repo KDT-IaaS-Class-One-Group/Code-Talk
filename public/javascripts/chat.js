@@ -15,3 +15,8 @@ const addNewMessage = (message) => {
 }
 
 const a = document.getElementById('a');
+a.addEventListener('click', () => {
+  if(txtInput.value !== "") {
+    addNewMessage(txtInput.value);
+  }
+})

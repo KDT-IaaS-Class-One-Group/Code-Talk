@@ -1,19 +1,23 @@
-.box-Container {
+#frm-Chat {
   display: flex;
   position: relative;
-
-}
-
-.box-Chat-Log {
   width: 80vw;
   height: 60vh;
-  padding: 10px;
-  border: 2px solid black;
-  bottom: 0;
+  flex-direction: column;
 }
 
-.box-Chat-Input {
+#box-Chat-Log {
   display: flex;
+  height: 90%;
+  padding: 10px;
+  border: 1px solid black;
+  flex-direction: column;
+  overflow-y: auto; 
+}
+
+#box-Chat-Input {
+  display: flex;
+  height: 10%;
   justify-content: space-between;
 }
 

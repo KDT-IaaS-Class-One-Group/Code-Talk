@@ -13,22 +13,17 @@
 
 <body>
   <div id="root">
-    <div class="box-Container">
-      <form id="frm-Chat" action="/chat" method="POST">
-        <ul class="box-Chat-Log">
-          <li>
-            test1
-          </li>
-          <li>
-            test2
-          </li>
-        </ul>
-        <div class="box-Chat-Input">
-          <input type="text" name="text" placeholder="내용 입력" id="txt-Input">
-          <input type="submit" id="btn-Submit">
-        </div>
-      </form>
-    </div>
+    <form id="frm-Chat" action="/chat" method="POST">
+      <ul id="box-Chat-Log">
+        <li>1</li>
+        <li>2</li>
+      </ul>
+      <div id="box-Chat-Input">
+        <input type="text" name="text" placeholder="내용 입력" id="txt-Input">
+        <input type="submit" id="btn-Submit">
+      </div>
+    </form>
+    <button id="a">a</button>
   </div>
 </body>
 
