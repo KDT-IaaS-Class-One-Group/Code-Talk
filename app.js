@@ -1,6 +1,9 @@
 const express = require('express');
+const socketIo = requrie('socket.io');
 const app = express();
 const port = 8080; // 사용할 포트 번호
+const server = http.createServer(app);
+const io = socketIo(server);
 
 // 정적 파일 제공 (HTML, CSS, JavaScript 등을 저장하는 디렉토리 지정)
 app.use(express.static('public'));
