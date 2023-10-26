@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 // POST 요청 처리
-app.post('/send', (req, res) => {
+app.post('/chat', (req, res) => {
     const text = req.body.text; // POST 요청에서 전달된 텍스트 데이터를 가져옵니다.
     
     console.log(text);

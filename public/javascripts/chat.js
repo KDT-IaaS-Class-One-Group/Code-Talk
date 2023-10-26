@@ -6,17 +6,25 @@ const scrollToBottom = () => {
   boxChatLog.scrollTop = chatLog.scrollHeight;
 }
 
-// 예를 들어, 새 메시지를 추가할 때 아래와 같이 스크롤 함수를 호출
 const addNewMessage = (message) => {
-  let newMessage = document.createElement("li");
-  newMessage.textContent = message;
-  boxChatLog.appendChild(newMessage);
+  const lis = document.createElement("li");
+  const spanName = document.createElement("span");
+  const spanContent = document.createElement("span");
+  
+  boxChatLog.appendChild(lis);
+  spanName.textContent = "임시";
+  spanName.setAttribute("id", "span-Name");
+
+  spanContent.textContent = message;
+  spanContent.setAttribute("id", "span-Content");
+  lis.appendChild(spanName);
+  lis.appendChild(spanContent);
+
   scrollToBottom();
 }
-
 const a = document.getElementById('a');
 a.addEventListener('click', () => {
   if(txtInput.value !== "") {
-    addNewMessage(txtInput.value);
+    addNewMessage(`${txtInput.value}`);
   }
-})
+});

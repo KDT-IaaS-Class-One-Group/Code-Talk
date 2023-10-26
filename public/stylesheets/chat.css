@@ -2,13 +2,15 @@
   margin-right: 5px;
 }
 
-
 #span-Content {
   margin-left: 5px;
   background-color: bisque;
   padding: 5px;
   border-style: solid;
   border-radius: 10px;
+  overflow: auto;
+  word-wrap: break-word; /* 긴 단어 또는 URL의 줄 바꿈 지원 */
+  white-space: pre-wrap; /* 공백과 줄 바꿈 유지 */
 }
 
 #frm-Chat {
