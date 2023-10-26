@@ -27,3 +27,19 @@ app.post('/send', (req, res) => {
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+  
+  // 클라이언트로부터 메시지 수신
+  socket.on('chat message', (msg) => {
+    console.log('Received message:', msg);
+    
+    // 클라이언트에게 메시지 브로드캐스트
+    io.emit('chat message', msg);
+  });
+  
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
+});
