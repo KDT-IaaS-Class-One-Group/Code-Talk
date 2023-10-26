@@ -1,20 +1,28 @@
-#root {
-  display: grid;
+.box-Container {
+  display: flex;
   position: relative;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+
 }
 
-#box-Chat {
-  justify-content: center;
-  align-items: center;
+.box-Chat-Log {
   width: 80vw;
   height: 60vh;
   padding: 10px;
   border: 2px solid black;
+  bottom: 0;
+}
 
-  list-style: none;
-  list-style-type: none;
+.box-Chat-Input {
+  display: flex;
+  justify-content: space-between;
+}
+
+#txt-Input {
+  height: 100%;
+  width: 80%;
+}
+
+#btn-Submit {
+  height: 100%;
+  width: 20%;
 }
