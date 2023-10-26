@@ -1,4 +1,20 @@
 #root {
   display: grid;
   position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#box-Chat {
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 60vh;
+  padding: 10px;
+  border: 2px solid black;
+
+  list-style: none;
+  list-style-type: none;
 }

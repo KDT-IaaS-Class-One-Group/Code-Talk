@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,22 +10,24 @@
   <script src="./javascripts/chat.js" defer></script>
   <title>Simple Chat</title>
 </head>
+
 <body>
   <div id="root">
     <h1>1:1 채팅</h1>
     <form id="textForm" action="/send" method="POST">
-        <ul>
-          <li>
-            test1
-          </li>
-          <li>
-            test2
-          </li>
-        </ul>
-        <input type="text" name="text" placeholder="텍스트 입력">
-        <button type="submit">전송</button>
+      <ul id="box-Chat">
+        <li>
+          test1
+        </li>
+        <li>
+          test2
+        </li>
+      </ul>
+      <input type="text" name="text" placeholder="텍스트 입력">
+      <button type="submit">전송</button>
     </form>
     <div id="result"></div>
   </div>
 </body>
+
 </html>
