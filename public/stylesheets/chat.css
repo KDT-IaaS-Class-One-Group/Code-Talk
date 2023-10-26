@@ -1,18 +1,17 @@
 #frm-Chat {
-  display: flex;
-  position: relative;
   width: 80vw;
   height: 60vh;
-  flex-direction: column;
+  position: relative;
 }
 
 #box-Chat-Log {
-  display: flex;
   height: 90%;
   padding: 10px;
   border: 1px solid black;
+  overflow-y: auto;
+  display: flex;
   flex-direction: column;
-  overflow-y: auto; 
+  justify-content: flex-end;
 }
 
 #box-Chat-Input {
