@@ -10,13 +10,18 @@
   <title>Simple Chat</title>
 </head>
 <body>
-  <div id="root">
+  <!-- <div id="root">
     <h1>1:1 채팅</h1>
     <form id="textForm" action="/send" method="POST">
         <input type="text" name="text" placeholder="텍스트 입력">
         <button type="submit">전송</button>
     </form>
     <div id="result"></div>
-  </div>
-</body>
-</html>
+  </div> -->
+
+  <ul id="messages"></ul>
+  <form action="">
+    <input id="input" autocomplete="off" /><button>전송</button>
+  </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
