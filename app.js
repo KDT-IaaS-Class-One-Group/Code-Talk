@@ -9,7 +9,7 @@ const io = socketIo(server);
 
 // 정적 파일 제공 (HTML, CSS, JavaScript 등을 저장하는 디렉토리 지정)
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true })); // URL-encoded 데이터 파싱 미들웨어 추가
+app.use(express.urlencoded({ extended: true } )); // URL-encoded 데이터 파싱 미들웨어 추가
 
 // GET 요청 처리
 app.get('/', (req, res) => {
@@ -18,29 +18,32 @@ app.get('/', (req, res) => {
 
 // POST 요청 처리
 app.post('/send', (req, res) => {
-    const text = req.body.text; // POST 요청에서 전달된 텍스트 데이터를 가져옵니다.
-    
-    console.log(text);
+  const message = req.body.text;
+  console.log('Received message:', message);
 
-    res.json(text);
+  // 클라이언트에게 메시지를 보냄
+  io.emit('chat message', message);
+
+  // 응답을 보낸 후, 추가 응답을 보내지 않음
+  res.status(200).send('Message sent');
 });
 
 // 서버 시작
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+server.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
 io.on('connection', (socket) => {
   console.log('A user connected');
-  
+
   // 클라이언트로부터 메시지 수신
   socket.on('chat message', (msg) => {
     console.log('Received message:', msg);
-    
+
     // 클라이언트에게 메시지 브로드캐스트
     io.emit('chat message', msg);
   });
-  
+
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
