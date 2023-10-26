@@ -1,3 +1,16 @@
+#span-Name {
+  margin-right: 5px;
+}
+
+
+#span-Content {
+  margin-left: 5px;
+  background-color: bisque;
+  padding: 5px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
 #frm-Chat {
   width: 80vw;
   height: 60vh;

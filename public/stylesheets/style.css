@@ -4,7 +4,12 @@
   box-sizing: border-box;
 }
 
+ul {
+  padding: 10px;
+}
+
 li {
+  margin: 10px;
   list-style: none;
   list-style-type: none;
 }
