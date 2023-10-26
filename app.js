@@ -1,5 +1,6 @@
 const express = require('express');
 const socketIo = require('socket.io');
+const http = require('http');
 
 const app = express();
 const port = 8080; // 사용할 포트 번호
