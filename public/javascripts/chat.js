@@ -4,7 +4,7 @@ const outputChat = document.getElementById("output-Chat");
 
 btnSend.addEventListener("click", sendMessage);
 
-function sendMessage() {
+const endMessage = () => {
   const messageText = txtContent.value;
   if (messageText.trim() !== "") {
     const messageElement = document.createElement("li");
@@ -35,8 +35,8 @@ function sendMessage() {
   }
 }
 
-txtContent.addEventListener("keyup", function(event) {
-  if (event.key === "Enter") {
+txtContent.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
     sendMessage();
   }
 });
