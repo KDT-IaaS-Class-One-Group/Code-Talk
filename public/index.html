@@ -12,16 +12,17 @@
 </head>
 
 <body>
-  <div class="chat-container">
-    <ul class="chat-messages" id="chat-messages">
-
-    </ul>
-    <div class="chat-input">
-      <input type="text" id="message-input" placeholder="Type a message...">
-      <button id="send-button">Send</button>
+  <div id="root">
+    <div class="container-Chat">
+      <ul id="output-Chat">
+        <!-- Chat messages will be added here as list items -->
+      </ul>
+      <div class="input-Chat">
+        <input type="text" id="txt-Content" placeholder="입력">
+        <button id="btn-Send">전송</button>
+      </div>
     </div>
   </div>
-  <script src="script.js"></script>
 </body>
 
 </html>
