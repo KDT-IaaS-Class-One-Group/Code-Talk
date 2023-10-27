@@ -1,30 +1,54 @@
-const boxChatLog = document.getElementById('box-Chat-Log');
-const txtInput = document.getElementById('txt-Input');
-const btnSubmit = document.getElementById('btn-Submit');
+const messageInput = document.getElementById("message-input");
+const sendButton = document.getElementById("send-button");
+const chatMessages = document.getElementById("chat-messages");
 
-const scrollToBottom = () => {
-  boxChatLog.scrollTop = chatLog.scrollHeight;
+sendButton.addEventListener("click", sendMessage);
+
+function sendMessage() {
+  const messageText = messageInput.value;
+  if (messageText.trim() !== "") {
+    const messageElement = document.createElement("li");
+    messageElement.textContent = messageText;
+    chatMessages.appendChild(messageElement);
+    messageInput.value = "";
+
+    // Scroll to the latest message
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
 }
 
-const addNewMessage = (message) => {
-  const lis = document.createElement("li");
-  const spanName = document.createElement("span");
-  const spanContent = document.createElement("span");
-  
-  boxChatLog.appendChild(lis);
-  spanName.textContent = "임시";
-  spanName.setAttribute("id", "span-Name");
-
-  spanContent.textContent = message;
-  spanContent.setAttribute("id", "span-Content");
-  lis.appendChild(spanName);
-  lis.appendChild(spanContent);
-
-  scrollToBottom();
-}
-const a = document.getElementById('a');
-a.addEventListener('click', () => {
-  if(txtInput.value !== "") {
-    addNewMessage(`${txtInput.value}`);
+messageInput.addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    sendMessage();
   }
 });
+
+function sendMessage(isOwnMessage) {
+  const messageText = messageInput.value;
+  if (messageText.trim() !== "") {
+    const messageElement = document.createElement("li");
+    messageElement.textContent = messageText;
+
+    if (isOwnMessage) {
+      messageElement.classList.add("own-message"); // Add a class for own messages
+    }
+
+    chatMessages.appendChild(messageElement);
+    messageInput.value = "";
+
+    // Scroll to the latest message
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+}
+
+// When sending your own message
+sendButton.addEventListener("click", () => {
+  sendMessage(true);
+});
+
+// When receiving a message (simulate a received message)
+function receiveMessage() {
+  const messageText = "This is a received message.";
+  sendMessage(false);
+}
+

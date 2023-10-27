@@ -12,20 +12,16 @@
 </head>
 
 <body>
-  <div id="root">
-    <form id="frm-Chat" action="/chat" method="POST">
-      <ul id="box-Chat-Log">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </ul>
-      <div id="box-Chat-Input">
-        <input type="text" name="text" placeholder="내용 입력" id="txt-Input">
-        <input type="submit" id="btn-Submit">
-      </div>
-    </form>
-    <button id="a">a</button>
+  <div class="chat-container">
+    <ul class="chat-messages" id="chat-messages">
+
+    </ul>
+    <div class="chat-input">
+      <input type="text" id="message-input" placeholder="Type a message...">
+      <button id="send-button">Send</button>
+    </div>
   </div>
+  <script src="script.js"></script>
 </body>
 
 </html>

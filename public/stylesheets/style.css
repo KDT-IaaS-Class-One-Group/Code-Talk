@@ -3,16 +3,3 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-li {
-  list-style: none;
-  list-style-type: none;
-}
-
-#root {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
