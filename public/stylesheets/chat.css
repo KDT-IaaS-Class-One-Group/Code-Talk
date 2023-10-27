@@ -21,7 +21,7 @@ li.own-message {
   height: 100vh;
 }
 
-.container-Chat {
+#frm-Chat {
   width: 100%;
   height: 100%;
   background-color: white;
@@ -53,7 +53,7 @@ input[type="text"] {
   margin-right: 10px;
 }
 
-button {
+#btn-Send {
   background-color: #007bff;
   color: white;
   border: none;
@@ -62,6 +62,34 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+#btn-Send:hover {
   background-color: #0056b3;
+}
+
+.message-text {
+  /* 다른 스타일링 옵션을 추가하세요 */
+  max-width: 70%; /* 메시지의 최대 너비를 지정 (70%로 설정, 조정 가능) */
+  word-wrap: break-word; /* 텍스트가 컨테이너를 벗어날 때 줄 바꿈하도록 설정 */
+  display: inline-block; /* 요소를 인라인 블록 요소로 설정하여 너비 설정이 동작하도록 함 */
+}
+
+.timestamp {
+  float: right;
+  clear: right;
+  /* 다른 스타일링 옵션을 추가하세요 */
+  margin-left: 10px; /* 날짜/시간과 메시지 사이의 여백을 추가 */
+}
+
+.message-text {
+  max-width: 70%;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
+.timestamp {
+  float: right;
+  clear: right;
+  font-size: 12px; /* 폰트 크기를 작게 설정 (조정 가능) */
+  margin-left: 10px;
+  margin-top: 5px; /* 위쪽 여백 추가 */
 }
