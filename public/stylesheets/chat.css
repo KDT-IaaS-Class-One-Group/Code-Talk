@@ -61,3 +61,15 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.message-text {
+  float: left;
+  clear: left;
+  /* 다른 스타일링 옵션을 추가하세요 */
+}
+
+.timestamp {
+  float: right;
+  clear: right;
+  /* 다른 스타일링 옵션을 추가하세요 */
+}

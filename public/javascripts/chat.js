@@ -7,8 +7,15 @@ btnSend.addEventListener("click", sendMessage);
 function sendMessage() {
   const messageText = txtContent.value;
   if (messageText.trim() !== "") {
-    const messageElement = document.createElement("li"); // Change to <li>
-    messageElement.textContent = messageText;
+    const messageElement = document.createElement("li");
+    
+    // 현재 날짜와 시간을 생성
+    const currentDate = new Date();
+    const timestamp = currentDate.toLocaleString();
+    
+    // 메시지 텍스트와 날짜/시간을 함께 표시
+    messageElement.textContent = `${timestamp} - ${messageText}`;
+    
     outputChat.appendChild(messageElement);
     txtContent.value = "";
 
@@ -21,3 +28,4 @@ txtContent.addEventListener("keyup", function(event) {
     sendMessage();
   }
 });
+
