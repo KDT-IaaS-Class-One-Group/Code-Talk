@@ -13,8 +13,20 @@ function sendMessage() {
     const currentDate = new Date();
     const timestamp = currentDate.toLocaleString();
     
-    // 메시지 텍스트와 날짜/시간을 함께 표시
-    messageElement.textContent = `${timestamp} - ${messageText}`;
+    // 메시지와 날짜/시간을 각각 <span> 요소로 분리
+    const messageSpan = document.createElement("span");
+    messageSpan.textContent = messageText;
+    
+    const timestampSpan = document.createElement("span");
+    timestampSpan.textContent = timestamp;
+    
+    // 각각의 <span> 요소를 <li>에 추가
+    messageElement.appendChild(messageSpan);
+    messageElement.appendChild(timestampSpan);
+    
+    // CSS 클래스를 추가하여 스타일링 가능
+    messageSpan.classList.add("message-text");
+    timestampSpan.classList.add("timestamp");
     
     outputChat.appendChild(messageElement);
     txtContent.value = "";
