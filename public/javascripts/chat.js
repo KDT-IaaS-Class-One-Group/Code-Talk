@@ -2,9 +2,7 @@ const txtContent = document.getElementById("txt-Content");
 const btnSend = document.getElementById("btn-Send");
 const outputChat = document.getElementById("output-Chat");
 
-btnSend.addEventListener("click", sendMessage);
-
-const endMessage = () => {
+function sendMessage() {
   const messageText = txtContent.value;
   if (messageText.trim() !== "") {
     const messageElement = document.createElement("li");
@@ -28,13 +26,17 @@ const endMessage = () => {
     messageSpan.classList.add("message-text");
     timestampSpan.classList.add("timestamp");
 
+    // 새로운 메시지를 가장 마지막에 추가
     outputChat.appendChild(messageElement);
-    txtContent.value = "";
 
+    // 스크롤을 가장 아래로 이동
     outputChat.scrollTop = outputChat.scrollHeight;
+
+    txtContent.value = "";
   }
 }
 
+btnSend.addEventListener("click", sendMessage);
 txtContent.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     sendMessage();
