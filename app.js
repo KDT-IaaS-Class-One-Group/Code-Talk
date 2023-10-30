@@ -24,14 +24,16 @@ app.post('/sendMessage', (req, res) => {
   const response = req.body.message;
   console.log('받은 메시지:', response);
 
-  if (response === '1') {
+  if (response === '인사말1') {
     res.send("안녕하세요");
-  } else if (response === '2') {
-    res.send("반갑습니다.");
-  } else if (response === '3') {
+  } else if (response === '인사말2') {
     res.send("안녕히 가세요.");
+  } else if (response === '실수') {
+    res.send("미안합니다.");
+  } else if (response === '감사') {
+    res.send("고맙습니다.");
   } else {
-    res.send("기타 응답");
+    res.send("입력되지 않은 값입니다.");
   }
 });
 
