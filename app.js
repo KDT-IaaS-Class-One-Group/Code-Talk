@@ -1,13 +1,18 @@
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
 const path = require('path');
-
+const readline = require("readline");
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
-
 const port = process.env.port || 8080;
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+app.use(express.static('public'));
+app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -15,14 +20,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/sendMessage', (req, res) => {
-  const message = req.query.message;
-  const currentDate = new Date();
-  const timestamp = currentDate.toLocaleString();
-
-  // 여기서 받은 메시지 및 시간 정보를 클라이언트로 반환
-  const response = { message, timestamp };
-  res.json(response);
+app.post('/sendMessage', (req, res) => {
+  const message = req.body.message;
+  console.log('받은 메시지:', message);
+  res.send("hi");
 });
 
 server.listen(port, () => {
