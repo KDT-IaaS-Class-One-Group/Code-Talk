@@ -4,35 +4,39 @@ const outputChat = document.getElementById("output-Chat");
 
 function sendMessage() {
   const messageText = txtContent.value;
-  if (messageText.trim() !== "") {
-    const messageElement = document.createElement("li");
 
-    // 현재 날짜와 시간을 생성
+  if (messageText.trim() !== "") {
     const currentDate = new Date();
     const timestamp = currentDate.toLocaleString();
 
-    // 메시지와 날짜/시간을 각각 <span> 요소로 분리
+    const messageElement = document.createElement("li");
     const messageSpan = document.createElement("span");
-    messageSpan.textContent = messageText;
-
     const timestampSpan = document.createElement("span");
+
+    messageSpan.textContent = messageText;
     timestampSpan.textContent = timestamp;
 
-    // 각각의 <span> 요소를 <li>에 추가
     messageElement.appendChild(messageSpan);
     messageElement.appendChild(timestampSpan);
 
-    // CSS 클래스를 추가하여 스타일링 가능
     messageSpan.classList.add("message-text");
     timestampSpan.classList.add("timestamp");
 
-    // 새로운 메시지를 가장 마지막에 추가
     outputChat.appendChild(messageElement);
-
-    // 스크롤을 가장 아래로 이동
     outputChat.scrollTop = outputChat.scrollHeight;
-
     txtContent.value = "";
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `/sendMessage?message=${messageText}`, true);
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        // 서버 응답을 처리하고 싶은 경우 여기에 작성
+        // 여기에서 서버로부터 받은 응답 데이터를 처리할 수 있습니다.
+        console.log("서버로부터 받은 응답:", xhr.responseText);
+      }
+    };
   }
 }
 
