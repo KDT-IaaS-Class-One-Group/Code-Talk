@@ -26,11 +26,12 @@ function sendMessage() {
     outputChat.scrollTop = outputChat.scrollHeight;
     txtContent.value = "";
 
-    axios.get("/sendMessage", { params: { message: messageText } })
+    axios.post("/sendMessage", { message: messageText })
       .then(response => {
         console.log("서버 응답:", response.data);
 
         const serverResponse = response.data;
+        // 이후 서버 응답에 대한 추가 작업을 진행할 수 있습니다.
       })
       .catch(error => {
         console.error("에러:", error);
