@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/sendMessage', (req, res) => {
+  const message = req.query.message;
+  res.send(`서버로부터 받은 메시지: ${message}`);
+});
+
 // Socket.io connection
 io.on('connection', (socket) => {
   console.log('A user connected');
