@@ -2,41 +2,54 @@ const txtContent = document.getElementById("txt-Content");
 const btnSend = document.getElementById("btn-Send");
 const outputChat = document.getElementById("output-Chat");
 
-btnSend.addEventListener("click", sendMessage);
-
 function sendMessage() {
   const messageText = txtContent.value;
-  if (messageText.trim() !== "") {
-    const messageElement = document.createElement("li");
 
-    // 현재 날짜와 시간을 생성
+  if (messageText.trim() !== "") {
     const currentDate = new Date();
     const timestamp = currentDate.toLocaleString();
 
-    // 메시지와 날짜/시간을 각각 <span> 요소로 분리
+    const messageElement = document.createElement("li");
     const messageSpan = document.createElement("span");
-    messageSpan.textContent = messageText;
-
     const timestampSpan = document.createElement("span");
+
+    messageSpan.textContent = messageText;
     timestampSpan.textContent = timestamp;
 
-    // 각각의 <span> 요소를 <li>에 추가
     messageElement.appendChild(messageSpan);
     messageElement.appendChild(timestampSpan);
 
-    // CSS 클래스를 추가하여 스타일링 가능
     messageSpan.classList.add("message-text");
     timestampSpan.classList.add("timestamp");
 
     outputChat.appendChild(messageElement);
+    outputChat.scrollTop = outputChat.scrollHeight;
     txtContent.value = "";
 
-    outputChat.scrollTop = outputChat.scrollHeight;
+    axios.post("/sendMessage", { message: messageText })
+    .then(response => {
+      console.log("서버로부터 받은 응답:", response.data);
+      // 여기에서 서버로부터 받은 응답 데이터를 처리할 수 있습니다.
+      const serverResponse = response.data;
+
+      // 예를 들어, 받은 응답을 outputChat에 추가하려면:
+      const serverResponseElement = document.createElement("li");
+      const responseSpan = document.createElement("span");
+      responseSpan.textContent = serverResponse;
+      serverResponseElement.appendChild(responseSpan);
+
+      outputChat.appendChild(serverResponseElement);
+      outputChat.scrollTop = outputChat.scrollHeight;
+    })
+    .catch(error => {
+      console.error("에러 발생:", error);
+    });
   }
 }
 
-txtContent.addEventListener("keyup", function(event) {
-  if (event.key === "Enter") {
+btnSend.addEventListener("click", sendMessage);
+txtContent.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
     sendMessage();
   }
 });

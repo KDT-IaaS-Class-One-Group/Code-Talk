@@ -22,19 +22,25 @@ li.own-message {
 }
 
 #frm-Chat {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  justify-content: space-between; /* 수정된 부분 */
 }
 
 #output-Chat {
-  max-height: 100%;
-  flex: 1;
+  display: flex;
+  max-height: 100vh;
   overflow-y: auto;
   padding: 10px;
+  flex-direction: column;
+}
+
+#output-Chat > div {
+  flex: 1 1 auto;
 }
 
 .input-Chat {
