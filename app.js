@@ -40,3 +40,6 @@ app.post('/sendMessage', (req, res) => {
 server.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
+
+
+// CLI test 커밋
