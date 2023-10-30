@@ -21,9 +21,18 @@ app.get('/', (req, res) => {
 });
 
 app.post('/sendMessage', (req, res) => {
-  const message = req.body.message;
-  console.log('받은 메시지:', message);
-  res.send("hi");
+  const response = req.body.message;
+  console.log('받은 메시지:', response);
+
+  if (response === '1') {
+    res.send("안녕하세요");
+  } else if (response === '2') {
+    res.send("반갑습니다.");
+  } else if (response === '3') {
+    res.send("안녕히 가세요.");
+  } else {
+    res.send("기타 응답");
+  }
 });
 
 server.listen(port, () => {
