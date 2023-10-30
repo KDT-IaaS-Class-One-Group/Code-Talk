@@ -33,7 +33,7 @@ app.post('/sendMessage', (req, res) => {
   } else if (response === '감사') {
     res.send("고맙습니다.");
   } else {
-    res.send("입력되지 않은 값입니다.");
+    res.send("확인되지 않은 메시지입니다.");
   }
 });
 
