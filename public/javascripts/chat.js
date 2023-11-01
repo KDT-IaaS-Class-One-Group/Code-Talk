@@ -1,3 +1,5 @@
+const socket = io();
+
 const outputChat = document.getElementById("output-Chat");
 const txtContent = document.getElementById("txt-Content");
 const btnSend = document.getElementById("btn-Send");
