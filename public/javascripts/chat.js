@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       outputChat.appendChild(messageElement);
       outputChat.scrollTop = outputChat.scrollHeight;
-
       txtContent.value = "";
 
       sendMessageToServer(messageText);
