@@ -1,12 +1,10 @@
 
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
 const path = require('path');
-
 const app = express();
-
-const port = process.env.port || 8080;
+const { Server } = require('socket.io');
+const port = 8080;
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
