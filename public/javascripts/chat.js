@@ -13,24 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageText = txtContent.value;
 
     if (messageText.trim() !== "") {
-      const currentDate = new Date();
-      const timestamp = currentDate.toLocaleString();
-
-      const messageElement = document.createElement("li");
-      const messageSpan = document.createElement("span");
-      const timestampSpan = document.createElement("span");
-
-      messageSpan.textContent = messageText;
-      timestampSpan.textContent = timestamp;
-
-      messageElement.appendChild(messageSpan);
-      messageElement.appendChild(timestampSpan);
-
-      messageSpan.classList.add("message-text");
-      timestampSpan.classList.add("timestamp");
-
-      outputChat.appendChild(messageElement);
-      outputChat.scrollTop = outputChat.scrollHeight;
       txtContent.value = "";
 
       sendMessageToServer(messageText);
