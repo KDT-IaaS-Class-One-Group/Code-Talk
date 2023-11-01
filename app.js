@@ -8,7 +8,6 @@ const { Server } = require('socket.io');
 const port = 8080;
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -29,5 +28,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+  console.log(`http://192.168.30.158:${port}`);
 });
