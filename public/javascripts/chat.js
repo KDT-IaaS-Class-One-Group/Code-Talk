@@ -38,9 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
-  btnSend.addEventListener("click", sendMessage);
-
   btnSend.addEventListener("click", sendMessage);
   txtContent.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
