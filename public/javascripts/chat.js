@@ -4,6 +4,10 @@ const outputChat = document.getElementById("output-Chat");
 const txtContent = document.getElementById("txt-Content");
 const btnSend = document.getElementById("btn-Send");
 
+function sendMessageToServer(message) {
+  socket.emit('chat message', message);
+}
+
 function sendMessage() {
   const messageText = txtContent.value;
   if (messageText.trim() !== "") {
