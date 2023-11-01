@@ -39,6 +39,8 @@ function sendMessage() {
     outputChat.scrollTop = outputChat.scrollHeight;
 
     txtContent.value = "";
+
+    sendMessageToServer(messageText);
   }
 }
 
