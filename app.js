@@ -1,4 +1,3 @@
-
 const express = require('express');
 const http = require('http');
 const path = require('path');
@@ -15,6 +14,8 @@ app.get('/', (req, res) => {
 
 const io = new Server(server);
 
+let remoteMouses = {};
+
 io.on('connection', (socket) => {
   console.log('사용자가 연결되었습니다.');
 
@@ -23,14 +24,16 @@ io.on('connection', (socket) => {
   });
 
   socket.on('mousePosition', (data) => {
-    socket.broadcast.emit('remoteMousePosition', data);
+    remoteMouses[socket.id] = data;
+    io.emit('remoteMousesPosition', remoteMouses);
   });
 
   socket.on('disconnect', () => {
+    delete remoteMouses[socket.id];
     io.emit('userDisconnected', socket.id);
   });
 });
 
 server.listen(port, () => {
-  console.log(`http://192.168.30.158:${port}`);
+  console.log(`Server is running at http://192.168.30.158:${port}`);
 });
