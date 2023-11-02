@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const socket = io();
-
   const root = document.getElementById('root');
-  const remoteMouse = document.getElementById('remote-mouse');
   const remoteMousePointer = document.getElementById('remote-mouse-pointer');
   const pointerSize = 10; // 원격 마우스 포인터의 크기
 
@@ -17,6 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isInRoot) {
       socket.emit('mousePosition', { x: mouseX, y: mouseY });
     }
+  });
+
+  socket.on('connect', () => {
+    // 연결되었을 때만 원격 마우스를 표시
+    remoteMouse.style.display = 'block';
+  });
+
+  socket.on('disconnect', () => {
+    // 연결이 끊길 때 원격 마우스를 숨김
+    remoteMouse.style.display = 'none';
   });
 
   socket.on('remoteMousePosition', (data) => {
@@ -45,4 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
   root.addEventListener('mouseenter', () => {
     document.body.style.overflow = 'auto';
   });
+});
+
+socket.on('userDisconnected', (disconnectedUserId) => {
+  const disconnectedPointer = document.getElementById(`pointer_${disconnectedUserId}`);
+  if (disconnectedPointer) {
+    disconnectedPointer.remove();
+  }
 });
