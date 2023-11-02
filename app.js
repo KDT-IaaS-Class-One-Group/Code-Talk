@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
   console.log('사용자가 연결되었습니다.');
 
   // 사용자 닉네임 설정
-  const userId = `사용자${io.engine.clientsCount}`;
+  const userId = `사용자 ${io.engine.clientsCount}`;
   socket.nickname = userId;
 
   socket.on('chat message', (msg) => {
