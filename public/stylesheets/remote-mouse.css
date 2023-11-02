@@ -1,0 +1,13 @@
+#remote-mouse {
+  position: absolute;
+  pointer-events: none;
+}
+
+#remote-mouse-pointer {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  z-index: 1000;
+}
