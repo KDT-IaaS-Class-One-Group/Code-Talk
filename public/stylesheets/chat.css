@@ -1,3 +1,5 @@
+/* chat.css */
+
 /* 기본 스타일 */
 * {
   margin: 0;
@@ -8,10 +10,36 @@
 /* 리스트 아이템 스타일 */
 li {
   list-style: none;
-  background-color: #f1f1f1;
-  padding: 10px;
   margin: 5px 0;
   border-radius: 10px;
+  padding: 10px;
+}
+
+/* 사용자 이름 스타일 */
+.user-id {
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #ffd700; /* 노란색 배경색 */
+}
+
+/* 메시지 내용 스타일 */
+.message-text {
+  background-color: #98fb98; /* 연두색 배경색 */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+/* 타임스탬프 스타일 */
+.timestamp {
+  float: right;
+  font-size: 12px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #87cefa; /* 하늘색 배경색 */
 }
 
 /* 자신의 메시지 스타일 */
@@ -79,33 +107,4 @@ input[type="text"] {
 
 #btn-Send:hover {
   background-color: #0056b3;
-}
-
-/* 메시지와 타임스탬프 스타일 */
-.message-text,
-.timestamp,
-.user-id {
-  max-width: 60%; /* 메시지, 타임스탬프, 사용자 이름의 최대 너비를 조정 (70%에서 60%로 수정) */
-  word-wrap: break-word;
-  display: inline-block;
-}
-
-/* 타임스탬프 스타일 */
-.timestamp {
-  float: right;
-  clear: right;
-  font-size: 12px;
-  margin-left: 10px;
-  margin-top: 5px;
-}
-
-/* 사용자 이름 스타일 */
-.user-id {
-  font-weight: bold; /* 사용자 이름을 굵게 표시 */
-  margin-right: 10px; /* 사용자 이름과 메시지 사이의 여백을 추가 */
-}
-
-/* 자신의 메시지에서 사용자 이름 색상 변경 */
-li.own-message .user-id {
-  color: #ff7f50; /* 사용자 이름의 색상을 변경 (예시: 주황색) */
 }
