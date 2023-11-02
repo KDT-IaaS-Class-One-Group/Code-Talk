@@ -1,31 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
   const socket = io();
   const root = document.getElementById('root');
-  const remoteMousePointer = document.getElementById('remote-mouse-pointer');
-  const pointerSize = 10; // 원격 마우스 포인터의 크기
-
-  document.addEventListener('mousemove', (event) => {
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
-
-    // Check if mouse is within the root element
-    const rect = root.getBoundingClientRect();
-    const isInRoot = mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom;
-
-    if (isInRoot) {
-      socket.emit('mousePosition', { x: mouseX, y: mouseY });
-    }
-  });
+  const remoteMouses = {};
 
   socket.on('connect', () => {
-    // 연결되었을 때만 원격 마우스를 표시
-    remoteMouse.style.display = 'block';
+    const mouseID = socket.id;
+    const newMouse = document.createElement('div');
+    newMouse.id = `remote-mouse-pointer-${mouseID}`;
+    newMouse.classList.add('remote-mouse-pointer');
+    document.getElementById('remote-mouse').appendChild(newMouse);
+
+    remoteMouses[mouseID] = newMouse;
+
+    document.addEventListener('mousemove', (event) => {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+
+      // Check if mouse is within the root element
+      const rect = root.getBoundingClientRect();
+      const isInRoot = mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom;
+
+      if (isInRoot) {
+        socket.emit('mousePosition', { x: mouseX, y: mouseY });
+      }
+    });
   });
 
-  socket.on('disconnect', () => {
-    // 연결이 끊길 때 원격 마우스를 숨김
-    remoteMouse.style.display = 'none';
-  });
 
   socket.on('remoteMousePosition', (data) => {
     const { x, y } = data;
@@ -45,19 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
     remoteMousePointer.style.top = `${adjustedY}px`;
   });
 
-  // Prevent scrolling when mouse is outside root element
-  root.addEventListener('mouseleave', () => {
-    document.body.style.overflow = 'hidden';
+  socket.on('disconnect', () => {
+    const mouseID = socket.id;
+    if (remoteMouses[mouseID]) {
+      document.getElementById('remote-mouse').removeChild(remoteMouses[mouseID]);
+      delete remoteMouses[mouseID];
+    }
   });
 
-  root.addEventListener('mouseenter', () => {
-    document.body.style.overflow = 'auto';
-  });
-});
-
-socket.on('userDisconnected', (disconnectedUserId) => {
-  const disconnectedPointer = document.getElementById(`pointer_${disconnectedUserId}`);
-  if (disconnectedPointer) {
-    disconnectedPointer.remove();
-  }
 });
