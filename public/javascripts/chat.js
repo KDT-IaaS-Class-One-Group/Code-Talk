@@ -5,6 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const txtContent = document.getElementById("txt-Content");
   const btnSend = document.getElementById("btn-Send");
 
+  document.addEventListener('mousemove', (event) => {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // 마우스 위치 정보를 서버에 전송
+    socket.emit('mouseMove', { x: mouseX, y: mouseY });
+  });
+
   function sendMessageToServer(message) {
     socket.emit('chat message', message);
   }
@@ -43,4 +51,5 @@ document.addEventListener("DOMContentLoaded", () => {
     outputChat.appendChild(messageElement);
     outputChat.scrollTop = outputChat.scrollHeight;
   });
+  
 });
