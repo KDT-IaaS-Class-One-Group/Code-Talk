@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    console.log('사용자가 연결을 해제했습니다.');
+    io.emit('userDisconnected', socket.id);
   });
 });
 
