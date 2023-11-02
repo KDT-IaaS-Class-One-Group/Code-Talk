@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     clickEffect.style.left = `${x}px`;
     clickEffect.style.top = `${y}px`;
+    clickEffect.style.zIndex = `10000`;
     
     remoteMousesElement.appendChild(clickEffect);
 
