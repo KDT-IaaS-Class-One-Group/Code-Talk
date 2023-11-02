@@ -20,9 +20,22 @@
         <!-- li 동적 생성 -->
       </ul>
       <div class="input-Chat">
+        <span id="user-nickname">사용자1</span>
+        <button id="btn-ChangeNickname">닉네임 변경</button>
         <input type="text" id="txt-Content" placeholder="입력">
         <input type="submit" id="btn-Send" value="전송">
       </div>
+    </div>
+  </div>
+
+  <!-- 팝업 창 -->
+  <div id="change-nickname-popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn">&times;</span>
+      <label for="new-nickname">새로운 닉네임:</label>
+      <input type="text" id="new-nickname" placeholder="새로운 닉네임을 입력하세요">
+      <button id="change-nickname-btn">변경</button>
+      <p id="nickname-error-message"></p>
     </div>
   </div>
 </body>
