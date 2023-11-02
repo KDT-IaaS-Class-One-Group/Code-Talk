@@ -1,5 +1,3 @@
-// 파일 이름: app.js
-
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -24,7 +22,13 @@ io.on('connection', (socket) => {
   socket.nickname = userId;
 
   socket.on('chat message', (msg) => {
-    io.emit('chat message', { message: `${socket.nickname}: ${msg}`, timestamp: new Date().toLocaleString() });
+    if (msg.isOwnMessage) {
+      // 발신된 메시지인 경우
+      io.emit('chat message', { message: msg.message, userId: socket.nickname, timestamp: new Date().toLocaleString(), isOwnMessage: true });
+    } else {
+      // 수신된 메시지인 경우
+      io.emit('chat message', { message: `${socket.nickname}: ${msg.message}`, userId: socket.nickname, timestamp: new Date().toLocaleString(), isOwnMessage: false });
+    }
   });
 
   socket.on('disconnect', () => {
