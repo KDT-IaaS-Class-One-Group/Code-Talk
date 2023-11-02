@@ -28,6 +28,10 @@ io.on('connection', (socket) => {
     io.emit('remoteMousesPosition', remoteMouses);
   });
 
+  socket.on('mouseClick', (data) => {
+    io.emit('clickEffect', data);
+  });
+
   socket.on('disconnect', () => {
     delete remoteMouses[socket.id];
     io.emit('userDisconnected', socket.id);
