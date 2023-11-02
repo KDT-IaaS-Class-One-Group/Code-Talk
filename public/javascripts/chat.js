@@ -6,24 +6,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createMessageElement(msg) {
     const messageElement = document.createElement("li");
+    const userIdSpan = document.createElement("span");
     const messageSpan = document.createElement("span");
     const timestampSpan = document.createElement("span");
-    const userIdSpan = document.createElement("span");
-
-    messageSpan.textContent = msg.message;
-    timestampSpan.textContent = msg.timestamp;
+  
     userIdSpan.textContent = msg.userId;
-
+    userIdSpan.classList.add("user-id");
+    messageSpan.textContent = msg.message.substring(msg.userId.length + 2); // 사용자 ID 길이와 ": "를 제거합니다.
+    timestampSpan.textContent = msg.timestamp;
+  
     messageSpan.classList.add("message-text");
     timestampSpan.classList.add("timestamp");
-    userIdSpan.classList.add("user-id");
-
+  
     messageElement.appendChild(userIdSpan);
     messageElement.appendChild(messageSpan);
     messageElement.appendChild(timestampSpan);
-
+  
     return messageElement;
   }
+  
 
   socket.on('chat message', (msg) => {
     const messageElement = createMessageElement(msg);
@@ -39,16 +40,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (messageText.trim() !== "") {
       txtContent.value = "";
-      const message = `${socket.nickname}: ${messageText}`;
+      const message = messageText;
       const timestamp = new Date().toLocaleString();
-      const messageElement = createMessageElement({
+
+      const messageObject = {
         message: message,
         userId: socket.nickname,
         timestamp: timestamp
-      });
+      };
 
-      outputChat.insertBefore(messageElement, outputChat.firstChild);
-      sendMessageToServer(messageText);
+      sendMessageToServer(messageObject);
     }
   }
 
