@@ -1,17 +1,26 @@
+/* 기본 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 리스트 아이템 스타일 */
 li {
   list-style: none;
-  list-style-type: none;
   background-color: #f1f1f1;
   padding: 10px;
   margin: 5px 0;
   border-radius: 10px;
 }
 
+/* 자신의 메시지 스타일 */
 li.own-message {
   background-color: #007bff;
   color: #fff;
 }
 
+/* 레이아웃 스타일 */
 #root {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -49,8 +58,7 @@ li.own-message {
   border-top: 1px solid #ccc;
 }
 
-/* input-Chat 내부 스타일 수정 */
-
+/* 입력 필드 스타일 */
 input[type="text"] {
   flex: 1;
   padding: 8px;
@@ -59,6 +67,7 @@ input[type="text"] {
   margin-right: 10px;
 }
 
+/* 전송 버튼 스타일 */
 #btn-Send {
   background-color: #007bff;
   color: white;
@@ -72,30 +81,31 @@ input[type="text"] {
   background-color: #0056b3;
 }
 
-.message-text {
-  /* 다른 스타일링 옵션을 추가하세요 */
-  max-width: 70%; /* 메시지의 최대 너비를 지정 (70%로 설정, 조정 가능) */
-  word-wrap: break-word; /* 텍스트가 컨테이너를 벗어날 때 줄 바꿈하도록 설정 */
-  display: inline-block; /* 요소를 인라인 블록 요소로 설정하여 너비 설정이 동작하도록 함 */
-}
-
-.timestamp {
-  float: right;
-  clear: right;
-  /* 다른 스타일링 옵션을 추가하세요 */
-  margin-left: 10px; /* 날짜/시간과 메시지 사이의 여백을 추가 */
-}
-
-.message-text {
-  max-width: 70%;
+/* 메시지와 타임스탬프 스타일 */
+.message-text,
+.timestamp,
+.user-id {
+  max-width: 60%; /* 메시지, 타임스탬프, 사용자 이름의 최대 너비를 조정 (70%에서 60%로 수정) */
   word-wrap: break-word;
   display: inline-block;
 }
 
+/* 타임스탬프 스타일 */
 .timestamp {
   float: right;
   clear: right;
-  font-size: 12px; /* 폰트 크기를 작게 설정 (조정 가능) */
+  font-size: 12px;
   margin-left: 10px;
-  margin-top: 5px; /* 위쪽 여백 추가 */
+  margin-top: 5px;
+}
+
+/* 사용자 이름 스타일 */
+.user-id {
+  font-weight: bold; /* 사용자 이름을 굵게 표시 */
+  margin-right: 10px; /* 사용자 이름과 메시지 사이의 여백을 추가 */
+}
+
+/* 자신의 메시지에서 사용자 이름 색상 변경 */
+li.own-message .user-id {
+  color: #ff7f50; /* 사용자 이름의 색상을 변경 (예시: 주황색) */
 }
