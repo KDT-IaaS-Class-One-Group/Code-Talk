@@ -5,20 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mousemove', (event) => {
     const mouseX = event.clientX;
     const mouseY = event.clientY;
+    
+    // 사용자마다 무작위 색상 생성
+    const userColor = getRandomColor();
 
-    // socket.emit('mousePosition', { x: mouseX, y: mouseY });
+    socket.emit('mousePosition', { x: mouseX, y: mouseY, color: userColor });
   });
 
   socket.on('remoteMousesPosition', (remoteMouses) => {
     remoteMousesElement.innerHTML = '';
     for (let id in remoteMouses) {
-      if (id !== socket.id) { // 현재 사용자의 마우스를 숨깁니다
-        const pointer = document.createElement('div');
-        pointer.className = 'remote-mouse-pointer';
-        pointer.style.left = remoteMouses[id].x + 'px';
-        pointer.style.top = remoteMouses[id].y + 'px';
-        remoteMousesElement.appendChild(pointer);
-      }
+      const userColor = remoteMouses[id].color;
+      const isCurrentUser = id === socket.id;
+
+      const pointer = document.createElement('div');
+      pointer.className = 'remote-mouse-pointer';
+      pointer.style.left = remoteMouses[id].x + 'px';
+      pointer.style.top = remoteMouses[id].y + 'px';
+      pointer.style.backgroundColor = isCurrentUser ? 'transparent' : userColor;
+      remoteMousesElement.appendChild(pointer);
     }
   });
 
@@ -28,4 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
       disconnectedPointer.remove();
     }
   });
+
+  function getRandomColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  }
 });
