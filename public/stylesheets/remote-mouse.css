@@ -3,6 +3,7 @@
   height: 20px;
   border-radius: 50%;
   position: absolute;
+  background-color: black;
   z-index: 2;
 }
 .click-effect {
