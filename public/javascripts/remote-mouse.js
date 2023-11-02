@@ -56,11 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
     clickEffect.style.left = `${data.x}px`;
     clickEffect.style.top = `${data.y}px`;
     
-    remoteMousesElement.appendChild(clickEffect);
-
-    // 클릭 효과가 서서히 사라지도록 설정 (예: 0.5초 후 삭제)
     setTimeout(() => {
       clickEffect.remove();
     }, 500); // 0.5초 (500ms)
+  
+    document.body.appendChild(clickEffect);
   });
 });
