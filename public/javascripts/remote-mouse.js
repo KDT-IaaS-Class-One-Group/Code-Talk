@@ -6,17 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-    socket.emit('mousePosition', { x: mouseX, y: mouseY });
+    // socket.emit('mousePosition', { x: mouseX, y: mouseY });
   });
 
   socket.on('remoteMousesPosition', (remoteMouses) => {
     remoteMousesElement.innerHTML = '';
     for (let id in remoteMouses) {
-      const pointer = document.createElement('div');
-      pointer.className = 'remote-mouse-pointer';
-      pointer.style.left = remoteMouses[id].x + 'px';
-      pointer.style.top = remoteMouses[id].y + 'px';
-      remoteMousesElement.appendChild(pointer);
+      if (id !== socket.id) { // 현재 사용자의 마우스를 숨깁니다
+        const pointer = document.createElement('div');
+        pointer.className = 'remote-mouse-pointer';
+        pointer.style.left = remoteMouses[id].x + 'px';
+        pointer.style.top = remoteMouses[id].y + 'px';
+        remoteMousesElement.appendChild(pointer);
+      }
     }
   });
 
