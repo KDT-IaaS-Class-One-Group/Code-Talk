@@ -1,4 +1,4 @@
-const cousor = document.querySelector('.sample_cousor');
+const cousor = document.querySelector('.cousor');
 
 const animateCursor = (e) => {
     cousor.style.left = `${e.pageX}px`;
