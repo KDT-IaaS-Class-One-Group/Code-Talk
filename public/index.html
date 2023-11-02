@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
   <link rel="stylesheet" type="text/css" href="./stylesheets/chat.css">
+  <link rel="stylesheet" type="text/css" href="./stylesheets/remote-mouse.css">
   <script src="./javascripts/script.js" defer></script>
   <script src="./javascripts/chat.js" defer></script>
+  <script src="./javascripts/remote-mouse.js" defer></script>
   <script src="https://cdn.socket.io/4.3.2/socket.io.min.js" defer></script>
 
   <title>Simple Chat</title>
@@ -15,9 +17,6 @@
 
 <body>
   <div id="root">
-    <div id="remote-mouse">
-      <div id="remote-mouse-pointer"></div>
-    </div>
     <div id="frm-Chat">
       <ul id="output-Chat">
         <!-- li 동적 생성 -->
@@ -26,6 +25,9 @@
         <input type="text" id="txt-Content" placeholder="입력">
         <input type="submit" id="btn-Send" value="전송">
       </div>
+    </div>
+    <div id="remote-mouse">
+      <div id="remote-mouse-pointer"></div>
     </div>
   </div>
 </body>
