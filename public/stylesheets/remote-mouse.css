@@ -5,3 +5,22 @@
   position: absolute;
   z-index: 1000;
 }
+
+.click-effect {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.5); /* 파란색 반투명 효과 */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: clickEffect 0.5s ease-out;
+}
+
+@keyframes clickEffect {
+  to {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
