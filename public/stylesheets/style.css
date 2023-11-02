@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.sample_cousor{
+.cousor{
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transform: translate(-50%, -50%);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -13,7 +13,7 @@
   position: fixed;
   border-radius: 50%;
   aspect-ratio: 1;
-  z-index: 9;
-  width: 60px;
+  z-index: 10;
+  width: 20px;
   cursor: none;
 }
