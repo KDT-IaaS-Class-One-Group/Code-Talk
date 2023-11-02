@@ -22,6 +22,11 @@ io.on('connection', (socket) => {
     io.emit('chat message', { message: msg, timestamp: new Date().toLocaleString() });
   });
 
+  socket.on('mouseMove', (data) => {
+    // 해당 클라이언트의 마우스 위치를 다른 클라이언트에 브로드캐스트
+    socket.broadcast.emit('mousePosition', data);
+  });
+
   socket.on('disconnect', () => {
     console.log('사용자가 연결을 해제했습니다.');
   });
